@@ -12,7 +12,7 @@ The files in this assignment are:
 
 * `spec/activerecord_practice_spec.rb` (the "specfile"), containing RSpec tests that will check the result of each query you write.
 
-* `customers.sqlite3`, the database containing the fake customers. (`customers-original.sqlite3` is just a backup copy, incase you need to restore your database.)
+* `customers.sqlite3`, the database containing the fake customers. (`customers-original.sqlite3` is just a backup copy, in case you need to restore your database.)
 
 * `customers.csv`, a version of the customer list that you can open in Excel or Google Sheets if you want to manually check your results
 
@@ -31,11 +31,19 @@ An alternative is [SQLTutorial.org](https://sqltutorial.org), sections 1-4, 11, 
 
 To get started,
 
-1. Clone the repo (`git clone https://github.com/saasbook/hw-activerecord-practice.git`)
+1. Clone the repo (`git clone https://github.com/NYU-CSE-Software-Engineering/hw-activerecord-practice`)
 
 2. Change into the app's root directory `hw-activerecord-practice` (`cd hw-activerecord-practice`)
 
-3. In the toplevel directory of the assignment, run `bundle` to make sure you have the necessary gems.
+3. Use the `Dockerfile` provided in the repo as an environment to work in via the Docker's shell (except for file 
+editing) as we have done previously. Relevant Docker command to build and run the container include:
+    - `docker build -t hw-activerecord-practice .`
+    - `docker run docker run -v "$(pwd)":/app -it hw-activerecord-practice:latest`
+
+    Note that since we are not launching a server in this CHIP, we don't need to configure the passthrough of 
+communications through port 3000 (as we did in earlier CHIPS).
+
+4. In the shell provided by the running Docker container, run `bundle install` to make sure you have the necessary gems.
 
 ## Background Information
 
@@ -93,6 +101,10 @@ When all the examples pass (RSpec should print each passing example's name in gr
 
 **NOTE:**  If you want to try the examples interactively, start the Ruby interpreter with `bundle exec irb`, and then within the Ruby interpreter type `load 'activerecord_practice.rb'`.  This will define the `Customer` class and allow you to try things like `Customer.where(...)` directly in the REPL (read-eval-print loop).
 
+## Submitting your work
+Commit all newly created and modified files to your local repo and then push them to your GitHub repo.
+Submit your work via Grdadescope so that it pulls your code from your connected GitHub repo.
+
 ## Helpful Hints and Links
 
 As usual, you will have to look up the ActiveRecord documentation to learn how to get these queries to work, which is part of the learning process:
@@ -112,7 +124,7 @@ Finally, if you're interested in learning more about the underlying SQL (Structu
 
 ## Bonus background information
 
-Although ActiveRecord is a key part of Rails, you can use the ActiveRecord library outside of a Rails app.  Indeed, these exercises make use of ActiveRecord, but the exercises themselves do not constitute a Rails app.  So there are a few differences between how we are using AR here and how you'd use it in a Rails app:
+Although ActiveRecord is a key part of Rails, you can use the ActiveRecord library outside a Rails app.  Indeed, these exercises make use of ActiveRecord, but the exercises themselves do not constitute a Rails app.  So there are a few differences between how we are using AR here and how you'd use it in a Rails app:
 
 1.  The Gemfile lists `active_record` as an explicit dependency.  In a Rails app, the Gemfile would just list `rails` as a gem, but `rails` in turn depends on `active_record`, and Bundler would detect and resolve that dependency.
 
