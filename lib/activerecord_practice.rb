@@ -19,7 +19,6 @@ class Customer < ApplicationRecord
 
   #  NOTE: Every one of these can be solved entirely by ActiveRecord calls.
   #  You should NOT need to call Ruby library functions for sorting, filtering, etc.
-
   def self.any_candice
     return Customer.where("first = 'Candice'")
   end
