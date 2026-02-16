@@ -22,8 +22,6 @@ class Customer < ApplicationRecord
 
   def self.any_candice
     return Customer.where("first = 'Candice'")
-    # YOUR CODE HERE to return all customer(s) whose first name is Candice
-    # probably something like:  Customer.where(....)
   end
 
   def self.with_valid_email
@@ -74,5 +72,5 @@ class Customer < ApplicationRecord
   def self.delete_everyone_born_before_1978
     return Customer.where("birthdate < ?", '1978-01-01').destroy_all
   end
-  
+
 end
